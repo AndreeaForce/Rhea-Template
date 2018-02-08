@@ -1,6 +1,5 @@
 <template>
     <div>
-        Main template
         <app-header></app-header>
         <intro></intro>
         <about></about>

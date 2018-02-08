@@ -1,7 +1,13 @@
 <template>
-    <div id="blog" class="container">
-        Blog
-    </div>
+    <section id="blog">
+        <div class="section--padding">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">Blog</div>
+                </div>
+            </div>
+        </div>
+    </section>
 </template>
 
 <script>

@@ -1,7 +1,13 @@
 <template>
-    <div id="services" class="container">
-        Services
-    </div>
+    <section id="services" >
+        <div class="section--padding">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">Services</div>
+                </div>
+            </div>
+        </div>
+    </section>
 </template>
 
 <script>

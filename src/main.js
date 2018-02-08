@@ -3,7 +3,11 @@ import App from './App.vue'
 import VueRouter from 'vue-router'
 import VueResource from 'vue-resource'
 import Routes from './routes/routes'
+import vueSmoothScroll from 'vue-smooth-scroll'
+import VueImg from 'v-img'
 
+Vue.use(VueImg);
+Vue.use(vueSmoothScroll);
 Vue.use(VueRouter);
 Vue.use(VueResource);
 

@@ -1,6 +1,7 @@
 <template>
     <div>
         <app-header></app-header>
+        <div class="scroll">
         <intro></intro>
         <about></about>
         <services></services>
@@ -8,6 +9,7 @@
         <blog></blog>
         <contact></contact>
         <app-footer></app-footer>
+        </div>
     </div>
 </template>
 
@@ -36,6 +38,7 @@ export default {
 </script>
 
 <style>
+
 .container {
     height: 400px;
 }

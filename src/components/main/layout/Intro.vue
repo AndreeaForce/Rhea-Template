@@ -1,15 +1,21 @@
 <template>
-    <section id="intro">
-        <div class="section--padding">
-            <div class="container">
+    <section id="intro" class="container-fluid">
+        <img class="img__background--full" src="../../../assets/header6.jpg" alt="full background">
+        <div class="intro__text-content">
                 <div class="row">
-                    <div class="col-lg-12">
-                        <h1 div class="section--title">INTRO</h1>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris aliquet malesuada feugiat. Curabitur fermentum bibendum nulla, non dictum ipsum tincidunt non. Quisque convallis pharetra tempor. Donec id pretium leo. Pellentesque luctus massa non elit viverra pellentesque. Cras vitae neque molestie, rhoncus ipsum sit amet, lobortis dui. Fusce in urna sem. Vivamus vehicula dignissim augue et scelerisque. Etiam quam nisi, molestie ac dolor in, tincidunt tincidunt arcu. Praesent sed justo finibus, fringilla velit quis, porta erat. Donec blandit metus ut arcu iaculis iaculis.</p>
-
+                    <div class="col-md-6 offset-md-3">
+                        <h5 class="intro__pre-title">Hi there</h5>
+                        <h1 div class="intro__title">I am Rhea theme</h1>
+                        <hr/>
                     </div>
+                    <div class="col-md-6 offset-md-3 section--col">
+                        <p class="intro__description">This describes what we do and what is our mission. 
+                        At right you cansee the awesome people behind. 
+                        Lorem ipsum magicum dolor sit amet,consectetur adipiscing elit. 
+                        Maecenas a sem ultrices neque vehiculafermentum a sit amet nulla.</p>
+                        <p class="intro__job">WEB DEVELOPER | WEB DESIGNER</p>
+                    </div> 
                 </div>
-            </div>
         </div>
     </section>
 </template>
@@ -17,35 +23,82 @@
 <script>
 
 export default {
-
+    data() {
+        return {
+        }
+    }
 }
 </script>
 
 <style>
-#intro { 
-    height: auto !important;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    min-height: 100vh;
 
+hr {
+    display: block;
+    width: 30px; 
+    height: 3px;
+    border: 0;
+    border-top: 3px solid #f2b632;
+    margin: 0;
+    padding: 0;
 }
-.section--title {
-    font-family: 'Anton', sans-serif;
-    font-size: 40px;
-    letter-spacing: 8px;
-    color: #b5b5b7;
-    max-width: 100%;
-    overflow: hidden;
+
+#intro {
+    position: relative;
+    height: 100vh;
+    margin: 0 !important;
+    padding: 0 !important;
 }
-.section--padding {
-    padding-left: 64px;
-    padding-right: 64px;
-    padding-top: 144px;
-    padding-bottom: 144px;
-    display: flex;
-    flex-wrap: nowrap;
-    align-items: center;
+.intro__text-content {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 0;
+    width: 100%;
+    padding: 0 10px;
+    
 }
+.img__background--full {
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    object-fit: cover;
+     filter: brightness(.5);
+    -webkit-filter: brightness(.5);
+}
+.row--no-margin {
+    margin: 0;
+}
+.intro__title {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 70px;
+    line-height: 1;
+    font-weight: 800;
+    color: #F2F2F2;
+    margin-bottom: 2rem;
+    letter-spacing: 0.2rem;
+}
+.intro__pre-title {
+    font-family: 'Crimson Text', serif;
+    font-size: 38px;
+    line-height: 1;
+    font-style: italic;
+    color: #F2F2F2;
+}
+.intro__description {
+    font-family: 'Crimson Text', serif;
+    font-size: 22px;
+    line-height: 1.4;
+    color: #F2F2F2;
+    margin-top: 0.8rem;
+    margin-bottom: 2rem;
+}
+.intro__job {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 16px;
+    line-height: 1;
+    font-weight: 300;
+    letter-spacing: 0.2rem;
+    color: #F2F2F2;
+}
+
 </style>

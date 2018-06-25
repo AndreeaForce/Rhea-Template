@@ -7,13 +7,11 @@
 <script>
 import MainLayout from './components/main/MainLayout.vue';
 import PortofolioPage from './components/pages/PortofolioPage.vue';
-import BlogPage from './components/pages/BlogPage.vue';
 
 export default {
     components: {
         'main-layout': MainLayout,
-        'portofolio-page': PortofolioPage,
-        'blog-page': BlogPage
+        'portofolio-page': PortofolioPage
     },
     data () {
         return {
@@ -26,7 +24,10 @@ export default {
 <style lang="scss">
     body {
         font-family: 'Open Sans', sans-serif;
-        background-color: #252839;
+        background-color: #677077;
+    }
+    .container {
+        min-height: 100vh;
     }
     
 </style>

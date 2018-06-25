@@ -125,18 +125,18 @@ export default {
                 {name: "Photo", isActive: false, rel: "photo"}
             ],
             items: [
-                {srcMain: require("../../../assets/header6.jpg"), srcOptional1: require("../../../assets/logo.png"), srcOptional2: require("../../../assets/header4.jpg"), name: "Website design", description: "This is a description text, more text is expected here. Just write something interesting, or not.", categories: ["projects", "all"], isActive: true},
-                {srcMain: require("../../../assets/header5.jpg"), name: "Video creation", description: "This is a description text, more text is expected here. Just write something interesting, or not.", categories: ["video", "all"], isActive: true},
-                {srcMain: require("../../../assets/header4.jpg"), name: "Design website", description: "This is a description text, more text is expected here. Just write something interesting, or not.", categories: ["video", "all"], isActive: true},
-                {srcMain: require("../../../assets/header6.jpg"), name: "Artistic photo here", description: "This is a description text, more text is expected here. Just write something interesting, or not.", categories: ["photo", "all"], isActive: true},
-                {srcMain: require("../../../assets/header3.jpg"), srcOptional1: require("../../../assets/logo.png"), name: "h Item 5", description: "This is a description text, more text is expected here. Just write something interesting, or not.", categories: ["projects", "all"], isActive: true},
-                {srcMain: require("../../../assets/header6.jpg"), name: "e Item 6", description: "This is a description text, more text is expected here. Just write something interesting, or not.", categories: ["video", "all"], isActive: true},
-                {srcMain: require("../../../assets/header5.jpg"), name: "m Item 7 photo here", description: "This is a description text, more text is expected here. Just write something interesting, or not.", categories: ["photo", "all"], isActive: true},
-                {srcMain: require("../../../assets/logo.png"), name: "f Item 8 photo here", description: "This is a description text, more text is expected here. Just write something interesting, or not.", categories: ["photo", "all"], isActive: true},
-                {srcMain: require("../../../assets/logo.png"), name: "l Item 9", description: "This is a description text, more text is expected here. Just write something interesting, or not.", categories: ["video", "all"],  isActive: true},
-                {srcMain: require("../../../assets/header5.jpg"), srcOptional1: require("../../../assets/logo.png"), name: "a Item 10", description: "This is a description text, more text is expected here. Just write something interesting, or not.", categories: ["projects", "all"], isActive: true},
-                {srcMain: require("../../../assets/logo.png"), name: "k Item 11 photo here", description: "This is a description text, more text is expected here. Just write something interesting, or not.", categories: ["photo", "all"], isActive: true},
-                {srcMain: require("../../../assets/logo.png"), name: "j Item 12", description: "This is a description text, more text is expected here. Just write something interesting, or not.", categories: ["video", "all"],  isActive: true}
+                {srcMain: require("../../../assets/header6.jpg"), srcOptional1: require("../../../assets/logo.png"), srcOptional2: require("../../../assets/header4.jpg"), name: "Website design", description: "This is a description text, more text is expected here. Just write something interesting, or not.", categories: ["projects", "all"], isActive: true, tags: ["web", "design"]},
+                {srcMain: require("../../../assets/header5.jpg"), name: "Video creation", description: "This is a description text, more text is expected here. Just write something interesting, or not.", categories: ["video", "all"], isActive: true, tags: ["design"]},
+                {srcMain: require("../../../assets/header4.jpg"), name: "Design website", description: "This is a description text, more text is expected here. Just write something interesting, or not.", categories: ["video", "all"], isActive: true, tags: ["simple"]},
+                {srcMain: require("../../../assets/header6.jpg"), name: "Artistic photo here", description: "This is a description text, more text is expected here. Just write something interesting, or not.", categories: ["photo", "all"], isActive: true, tags: ["responsive"]},
+                {srcMain: require("../../../assets/header3.jpg"), srcOptional1: require("../../../assets/logo.png"), name: "h Item 5", description: "This is a description text, more text is expected here. Just write something interesting, or not.", categories: ["projects", "all"], isActive: true, tags: ["responsive", "web"]},
+                {srcMain: require("../../../assets/header6.jpg"), name: "e Item 6", description: "This is a description text, more text is expected here. Just write something interesting, or not.", categories: ["video", "all"], isActive: true, tags: ["design"]},
+                {srcMain: require("../../../assets/header5.jpg"), name: "m Item 7 photo here", description: "This is a description text, more text is expected here. Just write something interesting, or not.", categories: ["photo", "all"], isActive: true, tags: ["simple"]},
+                {srcMain: require("../../../assets/logo.png"), name: "f Item 8 photo here", description: "This is a description text, more text is expected here. Just write something interesting, or not.", categories: ["photo", "all"], isActive: true, tags: ["simple"]},
+                {srcMain: require("../../../assets/logo.png"), name: "l Item 9", description: "This is a description text, more text is expected here. Just write something interesting, or not.", categories: ["video", "all"],  isActive: true, tags: ["design"]},
+                {srcMain: require("../../../assets/header5.jpg"), srcOptional1: require("../../../assets/logo.png"), name: "a Item 10", description: "This is a description text, more text is expected here. Just write something interesting, or not.", categories: ["projects", "all"], isActive: true, tags: ["responsive", "design"]},
+                {srcMain: require("../../../assets/logo.png"), name: "k Item 11 photo here", description: "This is a description text, more text is expected here. Just write something interesting, or not.", categories: ["photo", "all"], isActive: true, tags: ["web"]},
+                {srcMain: require("../../../assets/logo.png"), name: "j Item 12", description: "This is a description text, more text is expected here. Just write something interesting, or not.", categories: ["video", "all"],  isActive: true, tags: ["responsive"]}
             ]
         }
     },
@@ -145,11 +145,14 @@ export default {
             return this.paginateRows(this.sortData, this.display);
         },
         sortData() {
-            return this.sortRows(this.filterData, this.sortByActive);
+            return this.sortRows(this.filterDataTags, this.sortByActive);
+        },
+        filterDataTags() {
+            return this.filterTags(this.filterData);
         },
         filterData() {
             return this.filterRows(this.items, this.selectedRel);
-        }   
+        }
     },
     methods: {
         setMenu(item, index) { 
@@ -179,8 +182,7 @@ export default {
                 return sorted.slice(0, page);
             } else {
                 return sorted;
-            }  
-             
+            }       
         },
         sortRows(filter, sort) {
             if (sort === "Name: Ascending") {
@@ -189,26 +191,42 @@ export default {
                 return filter.sort((a,b) => b.name.localeCompare(a.name));
             } else {
                 return filter;
-            }
-            
+            }   
         },
-        filterRows(items, selected) {
+        filterRows(items, selectedRel) {
             items.forEach(element => {
                 var count = 0;
                 element.categories.map(function(val) {
-                    if (val === selected) {
+                    if (val === selectedRel) {
                         count ++;
                     } 
                 count > 0 ? element.isActive = true : element.isActive = false;
-            });           
-        }); 
+                });           
+            }); 
+            
             return items.filter(function(e){
                 return e;
             });
         },
-        filterBy() {
-            //console.log(this.items[0].isActive == true);
-            return this.items[0].isActive == true;
+        filterTags(items) {
+            
+            items.forEach(element => {
+                var count = 0;
+                console.log("is active? : " + element.isActive);
+                if (element.isActive) {
+                    var intersections = element.tags.filter(e => this.filterByTags.indexOf(e) !== -1);
+                        console.log("found something? : " + intersections.length);
+                    intersections > 0 ? count ++ : count;
+                        console.log(count);
+                    count > 0 ? element.isActive = true : element.isActive = false;
+                    console.log(element.isActive);
+                } 
+
+            });
+            
+            return items.filter(function(e){
+                return e;
+            });
         },
         loadMore() {
             this.display += this.offset;
@@ -266,7 +284,6 @@ export default {
                     this.filterByTags.push(this.tags[index].name);
                 }
             }
-                
         },
         setTags(tag, index) {
             if(this.tags[index].isActive === false) {
@@ -274,9 +291,7 @@ export default {
             } else if (this.tags[index].isActive === true) {
                 this.tags[index].isActive = false;
             } 
-
-        }
-        
+        }    
     }
 }
 </script>

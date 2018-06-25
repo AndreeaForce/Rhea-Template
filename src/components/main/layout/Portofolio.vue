@@ -254,36 +254,17 @@ export default {
            
             if (this.filterByTags.length === 0) { 
                 this.filterByTags.push(this.tags[index].name);
-                
-
-                console.log(this.filterByTags.indexOf(tag.name));
-                //console.log("nothing is here :" + this.filterByTags); 
-                console.log(this.filterByTags);
             } else {
                 var counter = 0;
-                this.filterByTags.forEach(item => {
-                    
-                    tag.name === item ? counter++ : counter;
-                    //console.log(tag.name === item);
-                    //console.log(counter);
-                    
+                this.filterByTags.forEach(item => {       
+                    tag.name === item ? counter++ : counter; 
                 }); 
                 if(counter > 0) {
-                        this.filterByTags.splice(this.filterByTags.indexOf(tag.name), 1); 
-
-                        console.log(this.filterByTags.indexOf(tag.name));
-                        //console.log(this.filterByTags.splice(index, 1));
-                        //console.log("match found");
-                        console.log(this.filterByTags);
+                    this.filterByTags.splice(this.filterByTags.indexOf(tag.name), 1); 
                 } 
                 else {
                     this.filterByTags.push(this.tags[index].name);
-
-                    console.log(this.filterByTags.indexOf(tag.name));
-                    //console.log("match not found");
-                    console.log(this.filterByTags);
                 }
-                console.log("............");
             }
                 
         },
